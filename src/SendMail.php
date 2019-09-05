@@ -45,7 +45,7 @@ class SendMail implements iMail
             'sender' => $_REQUEST['sender'],
             'senderName' => $_REQUEST['sendername'],
             'subject' => $_REQUEST['subject'],
-            'message' => $_REQUEST['message'],
+            'message' => urldecode($_REQUEST['message']),
             'reciver' => $_REQUEST['reciver'],
             'reciverName' => (isset($_REQUEST['reciverName']) ? $_REQUEST['reciverName'] : '')
         );
