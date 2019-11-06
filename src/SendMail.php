@@ -44,7 +44,7 @@ class SendMail implements iMail
             'password' => $_REQUEST['password'],
             'sender' => $_REQUEST['sender'],
             'senderName' => $_REQUEST['sendername'],
-            'subject' => $_REQUEST['subject'],
+            'subject' => urldecode($_REQUEST['subject']),
             'message' => urldecode($_REQUEST['message']),
             'reciver' => $_REQUEST['reciver'],
             'reciverName' => (isset($_REQUEST['reciverName']) ? $_REQUEST['reciverName'] : '')
@@ -55,7 +55,7 @@ class SendMail implements iMail
             $mail = new PHPMailer(true);
 
             try {
-
+                $mail->CharSet = "UTF-8";
                 $mail->SMTPDebug = 0;
                 $mail->isSMTP();
                 $mail->Host = $requestedData['host'];
